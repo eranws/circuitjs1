@@ -44,7 +44,7 @@ public class circuitjs1 implements EntryPoint {
 
     static CirSim mysim;
 
-    // This is the program entrypoint! 
+    // This is the program entrypoint!
     // Called by gtw automagically (see circuitjs1.gwt.xml)
     public void onModuleLoad() {
         // loadLocale() launches the sim after determining the language (see below)
@@ -90,7 +90,7 @@ public class circuitjs1 implements EntryPoint {
             loadSimulator(localizationMap);
             return;
         }
-        
+
         url = GWT.getModuleBaseURL() + "locale_" + lang + ".txt";
         RequestBuilder requestBuilder = new RequestBuilder(RequestBuilder.GET, url);
         try {
@@ -106,7 +106,7 @@ public class circuitjs1 implements EntryPoint {
                         localizationMap = processLocale(text);
                     } else {
                         GWT.log("Bad file server response: " + response.getStatusText());
-                        // if there was an error in retrieving the 
+                        // if there was an error in retrieving the
                         // language, default to English (empty map)
                         localizationMap = new HashMap<String, String>();
                     }
@@ -131,10 +131,8 @@ public class circuitjs1 implements EntryPoint {
                 continue;
             }
             int q2 = line.indexOf('"', 1);
-            if ((q2 < 0)
-                || (line.charAt(q2 + 1) != '=')
-                || (line.charAt(q2 + 2) != '"')
-                || (line.charAt(line.length() - 1) != '"')) {
+            if ((q2 < 0) || (line.charAt(q2 + 1) != '=') || (line.charAt(q2 + 2) != '"')
+                    || (line.charAt(line.length() - 1) != '"')) {
                 CirSim.console("ignoring line in string catalog: " + line);
                 continue;
             }
